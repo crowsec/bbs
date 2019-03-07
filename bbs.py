@@ -6,7 +6,7 @@
 # 
 # Software realiza a procura de arquivos e diretorio em um endereço de host. 
 #
-# Site: http://crowsec.github.io
+# Site: http://crowsec.wordpress.com
 #
 
 
