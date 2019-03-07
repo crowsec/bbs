@@ -1,0 +1,11 @@
+teste
+arquivo
+adm
+sistema_de_login
+admin
+senha
+password
+robots.txt
+adm.htm
+errou.html
+errou.htm
