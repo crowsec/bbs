@@ -73,11 +73,14 @@ if 'http' in args.url:
     salvou = open('out.log','w') # Abre/cria arquivo out.log como escrita para salvar a saida do modo verbose.
     texto = arq.readlines()
 
-
     for linha in texto:
-        saida = linha.split() # Transforma a string em uma lista
-        r = requests.get(args.url+'/'+saida[0]) # Faz request da url, concatenada com a palavra da wordlist.
-        
+        if len(linha) == 1:
+           # print("LINHA EM BRANCO\n")
+            pass
+        else:
+            saida = linha.split() # Transforma a string em uma lista
+            r = requests.get(args.url+'/'+saida[0]) # Faz request da url, concatenada com a palavra da wordlist.
+                
         if args.verbose:
             if r.status_code == 200:
                 print("{}[v]{}{}\t{}{}" .format(azul,original,r.url,verde,r.status_code))
@@ -104,9 +107,12 @@ if 'http' in args.url:
         
         for url in achado:
             for linha in texto:
-                saida = linha.split()
-                filtro = re.sub('//$','/',url) # Realiza expressão regular para tirar duplicidade de // no final da url.
-                r = requests.get(filtro+saida[0])
+                if len(linha) == 1:
+                    pass
+                else:
+                    saida = linha.split()
+                    filtro = re.sub('//$','/',url) # Realiza expressão regular para tirar duplicidade de // no final da url.
+                    r = requests.get(filtro+saida[0])
                 if args.verbose:
                     if r.status_code == 200:
                         achado.append(r.url+'/')
